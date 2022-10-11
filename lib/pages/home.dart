@@ -30,7 +30,13 @@ class HomePage extends StatelessWidget {
                   log('size =  ${(await controller.getFileSize(value))}');
                   log('mime =  ${(await controller.getFileMIME(value))}');
                 },
-                onDropMultiple: (value) => log('${value!.length}'),
+                onDropMultiple: (value) {
+                  value?.forEach((value) async {
+                    log('name =  ${(await controller.getFilename(value))}');
+                    log('size =  ${(await controller.getFileSize(value))}');
+                    log('mime =  ${(await controller.getFileMIME(value))}');
+                  });
+                },
                 onLeave: () => log('Zone left'),
               ),
               Center(
